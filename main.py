@@ -13,6 +13,21 @@ def index():
     indice = np.random.randint(df_movie.shape[0])
     filme = df_movie['movie'].iloc[indice]
     texto_usuario, Predicao = "", ""
+    
+    # Acorda o back end
+    server_caminho = 'https://inteligenciahumananlpback.herokuapp.com'
+    retorno = requests.get( server_caminho )
+    print(retorno.status_code)
+    if retorno.status_code != requests.codes.ok :
+         return "<br><br><p><H3><CENTER>ERRO!!! - Back End inoperante. Tente mais tarde</CENTER></H3></p>"
+   
+    return render_template('index.html', Indice = str(indice), Filme = filme, Textodigitado = texto_usuario, Predicao=Predicao)
+    
+@app.route('/new/',  methods=['GET', 'POST'])
+def new():
+    indice = np.random.randint(df_movie.shape[0])
+    filme = df_movie['movie'].iloc[indice]
+    texto_usuario, Predicao = "", ""
     return render_template('index.html', Indice = str(indice), Filme = filme, Textodigitado = texto_usuario, Predicao=Predicao)
 
 
