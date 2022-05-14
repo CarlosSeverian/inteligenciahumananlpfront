@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Inteligência em Negócios</title>
+		<!-- carregando bootstrap -->
+		<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		
+		<script language="JavaScript" type="text/javascript">
+			<!-- função javascript para abrir popoup -->
+			function novaJanela (URL){
+				var myWin = window.open(URL,"janela2","width=500, height=500, top=100, left=250, directories=no, location=no, menubar=no, scrollbars=yes, status=no, toolbar=no, resizable=no");
+				myWin.focus();
+			}
+		</script>
+	</head>
+
+	<body class="page_bg" style="background-color:#FFFFFF;">
+		<div class="container"> <!-- inserindo abertura do bootstrap -->
+			<div class="col-md-8"> <!-- utilizando a classe col do bootstrap -->
+				<div class="jumbotron clearfix"> 
+					<CENTER><img src="{{url_for('static', filename='Pos Maua.png')}}" /></CENTER>
+					<CENTER><H5><a href="javascript:novaJanela('/sobre/')">Sobre</a></H5></CENTER>
+					<H4><CENTER><b>Classificação de Comentários em Filmes</b></CENTER></H4>
+					<CENTER><a class="btn btn-micro btn-primary" href="/">Escolha outro filme</a></CENTER>				
+					<H5>Avalie Este Filme: <b>{{Filme}}</b></H5>
+					 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;
+					 <img center src="/static/{{Indice}}.jpg" ></img><br><br>
+
+					<form action="/sendbackend/" method = "post">
+					
+						                        <input type="hidden" name="Indice"     value="{{Indice}}">
+						                        <input type="hidden" name="Filme"      value="{{Filme}}">												
+						Escreva seu comentário: <input type="text"   name="comentario" value=""  size=30 maxlength=150></p>
+						<input class="btn btn-micro btn-primary" value="Enviar Comentário" type="submit">
+					</form>
+					<H5>Comentário: <b>{{Textodigitado}}</b></H5>
+					<H5>Avaliação: <b>{{Predicao}}</b></H5>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
