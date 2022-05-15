@@ -17,7 +17,6 @@ def index():
     # Acorda o back end
     server_caminho = 'https://inteligenciahumananlpback.herokuapp.com'
     retorno = requests.get( server_caminho )
-    print(retorno.status_code)
     if retorno.status_code != requests.codes.ok :
          return "<br><br><p><H3><CENTER>ERRO!!! - Back End inoperante. Tente mais tarde</CENTER></H3></p>"
    
@@ -51,11 +50,11 @@ def sendbackend():
     return render_template('index.html', Indice = str(indice), Filme = filme, Textodigitado = texto_usuario, Predicao=Predicao)
 
 @app.route('/sobre/')
-def saibamais():
+def sobre():
     return render_template('sobre.html')
     
     
 if __name__ == "__main__":
-    app.run(port=5000,host='0.0.0.0', debug=True)
+    app.run(port=5000,host='0.0.0.0', debug=False)
     
     
