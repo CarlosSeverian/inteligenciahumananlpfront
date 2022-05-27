@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Inteligência em Negócios</title>
+		<!-- carregando bootstrap -->
+		<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	</head>
+
+	<body class="page_bg" style="background-color:#FFFFFF;">
+		<div class="container"> <!-- inserindo abertura do bootstrap -->
+			<div class="col-md-10"> <!-- utilizando a classe col do bootstrap -->
+				<div class="jumbotron clearfix"> 
+					<CENTER><img center src="/static/Pos Maua.png" /></CENTER>
+					<br>
+
+					<table border="1">
+						<tr>
+							{% for col in column_names %}
+							<td align="center"><b>{{col}}</b></td>
+							{% endfor %}
+						</tr>
+						{% for row in row_data %}
+						<tr>
+							{% for col, row_ in zip(column_names, row) %}
+							<td align="center">{{row_}}</td>
+							{% endfor %}
+						</tr>
+						{% endfor %}
+					</table>			
+					
+					<br>
+					<CENTER><a class='btn btn btn-primary' href='javascript:window.close();'>Fechar</a><br><br></CENTER>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

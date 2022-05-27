@@ -8,11 +8,16 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		
 		<script language="JavaScript" type="text/javascript">
-			<!-- função javascript para abrir popoup -->
 			function novaJanela (URL){
 				var myWin = window.open(URL,"janela2","width=500, height=500, top=100, left=250, directories=no, location=no, menubar=no, scrollbars=yes, status=no, toolbar=no, resizable=no");
 				myWin.focus();
 			}
+
+			function novaJanela1 (URL){
+				var myWin1 = window.open(URL,"janela2","width=800, height=500, top=100, left=150, directories=no, location=no, menubar=no, scrollbars=yes, status=no, toolbar=no, resizable=no");
+				myWin1.focus();
+			}
+
 		</script>
 	</head>
 
@@ -23,7 +28,8 @@
 					<CENTER><img src="{{url_for('static', filename='Pos Maua.png')}}" /></CENTER>
 					<CENTER><H5><a href="javascript:novaJanela('/sobre/')">Sobre</a></H5></CENTER>
 					<H4><CENTER><b>Classificação de Comentários em Filmes</b></CENTER></H4>
-					<CENTER><a class="btn btn-micro btn-primary" href="/new/">Escolha outro filme</a></CENTER>				
+					<CENTER><a class="btn btn-micro btn-primary" href="/new/">Escolha outro filme</a>		
+					<a class="btn btn-micro btn-primary" href="javascript:novaJanela1('/gravadas/')">Exibir Comentários Gravados</a></CENTER>				
 					<H5>Avalie Este Filme: <b>{{Filme}}</b></H5>
 					 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;
 					 <img center src="/static/{{Indice}}.jpg" ></img><br><br>
