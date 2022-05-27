@@ -41,7 +41,7 @@ def sendbackend():
     # envio a mensagem ao backend em json e recebo o retorno, também em json
     server_caminho = 'https://inteligenciahumananlpback.herokuapp.com/predict/'
     headers = {'Content-Type': 'application/json'}
-    dados = {'avaliacao': texto_usuario}
+    dados = {'avaliacao': texto_usuario, 'movie': filme}
     retorno = requests.post( server_caminho, headers=headers, data=json.dumps(dados) )
     Predicao = retorno.json()
     Predicao = Predicao['avaliacao']
@@ -52,6 +52,18 @@ def sendbackend():
 @app.route('/sobre/')
 def sobre():
     return render_template('sobre.html')
+
+
+@app.route('/gravadas/')
+def gravadas():
+    server_caminho = 'https://inteligenciahumananlpback.herokuapp.com/avaliacoes/'
+    retorno = requests.get( server_caminho )
+    aval_retorno = retorno.json()
+    df = pd.DataFrame(aval_retorno['data'])
+    df = df[['Filme', 'Comentario', 'Avaliacao']]
+    df['Avaliacao'] = df['Avaliacao'].replace({"0":"negativa 😞", "1":"positiva 😃"})
+
+    return render_template('gravadas.html', column_names=df.columns.values, row_data=list(df.values.tolist()), zip=zip )
     
     
 if __name__ == "__main__":
